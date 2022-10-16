@@ -18,6 +18,7 @@ struct data
 struct data maba[nmax]; // deklarasi variabel bertipe struct
 void tambah_data();     // prototype fungsi void
 void hapus_data();
+void edit_data();
 void tampilkan_data();
 main()
 {
@@ -26,17 +27,20 @@ menu:
     cout << " \t\t MENU \n";
     cout << "1. tambah data\n";
     cout << "2. hapus data \n";
-    cout << "3. tampilkan data \n";
-    cout << "4. keluar \n";
-    cout << "\n Pilih menu (1/2/3/4) ? ";
+    cout << "3. edit data \n";
+    cout << "4. tampilkan data \n";
+    cout << "5. keluar \n";
+    cout << "\n Pilih menu (1/2/3/4/5) ? ";
     cin >> pil;
     if (pil == 1)
         tambah_data();
     else if (pil == 2)
         hapus_data();
     else if (pil == 3)
-        tampilkan_data();
+        edit_data();
     else if (pil == 4)
+        tampilkan_data();
+     else if (pil == 5)
         exit(1); // atau bisa pakai return(0)
     else
     {
@@ -80,6 +84,30 @@ void hapus_data()
         n--;
     else
         cout << "\n data yang ingin dihapus tidak ada...!!!\n";
+}
+void edit_data(){
+    int y;
+    cout << "pilih data yang akan diedit(1 s.d. 5) : ";
+    cin >> y;
+    if (y<n){
+        if (y<n && y>0){
+            for (int i=y; i<n; i++){
+                strcpy(maba[i - 1].nama, maba[y].nama);
+                maba[i - 1].nim = maba[y].nim;
+                maba[i - 1].kom = maba[y].kom;
+            }
+         n--;
+        } 
+        cout << "nama : ";
+        cin >> maba[y-1].nama;
+        cout << "NIM : ";
+        cin >> maba[y-1].nim;
+        cout << "Kom : ";
+        cin >> maba[y-1].kom;
+        n++;
+        }
+    else
+        cout << "\n data yang ingin diedit tidak ada...!!!\n";
 }
 void tampilkan_data()
 {
