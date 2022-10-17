@@ -10,7 +10,6 @@ using namespace std;
 int n = 0; // variable n sebagai banyak data yang telah tersimpan
 struct data
 { // struktur data mahasiswa yg akan diinput
-
     int nim;
     char nama[20];
     char kom;
@@ -19,15 +18,17 @@ struct data maba[nmax]; // deklarasi variabel bertipe struct
 void tambah_data();     // prototype fungsi void
 void hapus_data();
 void tampilkan_data();
+void ubah_data();
 main()
 {
     int pil;
 menu:
-    cout << " \t\t MENU \n";
+    cout << " \t MENU \n";
     cout << "1. tambah data\n";
     cout << "2. hapus data \n";
     cout << "3. tampilkan data \n";
-    cout << "4. keluar \n";
+    cout << "4. ubah data\n";
+    cout << "5. keluar \n";
     cout << "\n Pilih menu (1/2/3/4) ? ";
     cin >> pil;
     if (pil == 1)
@@ -37,6 +38,8 @@ menu:
     else if (pil == 3)
         tampilkan_data();
     else if (pil == 4)
+        ubah_data();
+    else if (pil == 5)
         exit(1); // atau bisa pakai return(0)
     else
     {
@@ -96,4 +99,21 @@ void tampilkan_data()
             cout << endl;
         }
     }
+}
+void ubah_data()
+{
+	int i,j;
+    cout<<"Masukkan data ke berapa yang mau di ubah: ";
+    cin>>j;
+    
+	i=j-1;
+	cout<<"NAMA\t: ";
+	cin>>maba[i].nama;
+	cout<<"NIM\t: ";
+	cin>>maba[i].nim;
+	cout<<"KOM\t: ";
+	cin>>maba[i].kom;
+	
+	tampilkan_data();
+}
 }
