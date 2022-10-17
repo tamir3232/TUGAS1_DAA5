@@ -10,7 +10,6 @@ using namespace std;
 int n = 0; // variable n sebagai banyak data yang telah tersimpan
 struct data
 { // struktur data mahasiswa yg akan diinput
-
     int nim;
     char nama[20];
     char kom;
@@ -19,6 +18,7 @@ struct data maba[nmax]; // deklarasi variabel bertipe struct
 void tambah_data();     // prototype fungsi void
 void hapus_data();
 void tampilkan_data();
+void update_data();
 main()
 {
     int pil;
@@ -27,8 +27,9 @@ menu:
     cout << "1. tambah data\n";
     cout << "2. hapus data \n";
     cout << "3. tampilkan data \n";
-    cout << "4. keluar \n";
-    cout << "\n Pilih menu (1/2/3/4) ? ";
+    cout << "4. update data\n";
+    cout << "5. keluar \n";
+    cout << "\n Pilih menu (1/2/3/4/5) ? ";
     cin >> pil;
     if (pil == 1)
         tambah_data();
@@ -37,6 +38,8 @@ menu:
     else if (pil == 3)
         tampilkan_data();
     else if (pil == 4)
+        update_data();
+    else if (pil == 5)
         exit(1); // atau bisa pakai return(0)
     else
     {
@@ -50,7 +53,7 @@ void tambah_data()
 {
     if (n < nmax)
     {
-        cout << "nama : ";
+        cout << "Nama : ";
         cin >> maba[n].nama;
         cout << "NIM : ";
         cin >> maba[n].nim;
@@ -97,3 +100,17 @@ void tampilkan_data()
         }
     }
 }
+void update_data()
+{
+	int i,dt;
+    cout<<"Masukkan data yang akan di update: ";
+    cin>>dt;
+	i=dt-1;
+	cout<<"Nama\t: ";
+	cin>>maba[i].nama;
+	cout<<"Nim\t: ";
+	cin>>maba[i].nim;
+	cout<<"Kom\t: ";
+	cin>>maba[i].kom;
+	tampilkan_data();
+    }
